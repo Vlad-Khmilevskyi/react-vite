@@ -3,7 +3,7 @@ import axios from 'axios';
 import './postForm.scss';
 const API_URL = 'https://rest-api-production-fc73.up.railway.app/api/v1/posts';
 
-const PostForm = ({updatePosts}) => {
+const PostForm = ({ setUpdatePosts }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [text, setText] = useState('');
@@ -19,12 +19,10 @@ const PostForm = ({updatePosts}) => {
 
     axios.post(API_URL, newPost)
       .then(() => {
-        // Clear form fields
         setTitle('');
         setDescription('');
         setText('');
-        // Update the list of posts by calling the function from PostList
-        updatePosts(console.log('qwe'));
+        setUpdatePosts(true);
       })
     .catch((error) => console.log(error));
   };
